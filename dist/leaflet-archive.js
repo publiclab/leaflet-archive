@@ -24,11 +24,21 @@ function fetchImages(sourceUrl) {
 
 function onResponse(result) {
   console.log(result);
+
+  var limit = getUrlHashParameter('limit') || 1;
+
   Object.keys(result.files).forEach(function(key, index) {
     var identifier = result.metadata.identifier[0];
     var dir = result.dir;
     var file = result.files[key];
-    if (index < 2 && file.source != "derivative") {
+
+    function addImageMarker(img, lat, lon) {
+      console.log(img, lat, lon);
+      var originalUrl = 'https://archive.org/download/' + identifier + '/' + file.original;
+      new L.marker([lat, lon]).addTo(map).bindPopup("<a href='/" + originalUrl + "'><img src='" + img.src + "' /></a>");
+    }
+
+    if (index < (limit * 2) && file.source != "derivative") {
       $('.images').append('<img class="img-' + index + '" />');
       var img = $('.images .img-' + index)
       img.on('load', function() {
@@ -39,11 +49,6 @@ function onResponse(result) {
       img[0].src = 'http://insecure-archive.robocracy.org/download/' + identifier + key;
     }
   });
-}
-
-function addImageMarker(src, lat, lon) {
-  console.log(src, lat, lon);
-  L.marker([lat, lon]).addTo(map).bindPopup("<a href='/maps'><img src='" + src + "' /></a>");
 }
 
 /*
