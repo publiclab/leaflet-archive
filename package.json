@@ -1,0 +1,33 @@
+{
+  "name": "leaflet-archive",
+  "version": "0.0.1",
+  "description": "A Leaflet map tool for viewing images from an Archive.org resource on a map based on embedded EXIF GPS data.",
+  "main": "dist/leaflet-archive.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/publiclab/leaflet-archive.git"
+  },
+  "keywords": [
+    "images",
+    "Public Lab",
+    "leaflet",
+    "geodata",
+    "exif",
+    "archive.org"
+  ],
+  "author": "Public Lab",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/publiclab/leaflet-archive/issues"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "exif-js": "^2.3.0",
+    "bootstrap": "^3.3.7",
+    "leaflet": "^1.0.3"
+  },
+  "devDependencies": {
+  },
+  "homepage": "https://github.com/publiclab/leaflet-archive"
+}
