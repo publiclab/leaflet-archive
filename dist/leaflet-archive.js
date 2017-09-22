@@ -28,18 +28,21 @@ function onResponse(result) {
     var identifier = result.metadata.identifier[0];
     var dir = result.dir;
     var file = result.files[key];
-    if (file.source == "derivative") {
+    if (index < 2 && file.source != "derivative") {
       $('.images').append('<img class="img-' + index + '" />');
       var img = $('.images .img-' + index)
       img.on('load', function() {
         geocodeImage(img[0], addImageMarker);
       });
-      img[0].src = 'https://archive.org/download/' + identifier + key;
+      //img[0].src = 'https://archive.org/download/' + identifier + key;
+      // proxy to bypass Archive.org CORS restriction -- temporary solution
+      img[0].src = 'http://insecure-archive.robocracy.org/download/' + identifier + key;
     }
   });
 }
 
 function addImageMarker(src, lat, lon) {
+  console.log(src, lat, lon);
   L.marker([lat, lon]).addTo(map).bindPopup("<a href='/maps'><img src='" + src + "' /></a>");
 }
 
@@ -55,6 +58,7 @@ function geocodeImage(img, onComplete) {
   EXIF.getData(img, function() {
     var GPS = EXIF.getAllTags(img)
 
+    console.log(GPS);
     /* If the lat/lng is available. */
     if (typeof GPS["GPSLatitude"] !== 'undefined' && typeof GPS["GPSLongitude"] !== 'undefined'){
 
