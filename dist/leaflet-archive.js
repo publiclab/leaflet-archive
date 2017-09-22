@@ -25,7 +25,7 @@ function fetchImages(sourceUrl) {
 function onResponse(result) {
   console.log(result);
 
-  var limit = getUrlHashParameter('limit') || 1;
+  var limit = getUrlHashParameter('limit') || 5;
 
   Object.keys(result.files).forEach(function(key, index) {
     var identifier = result.metadata.identifier[0];
