@@ -46,7 +46,7 @@ function onResponse(result) {
       });
       //img[0].src = 'https://archive.org/download/' + identifier + key;
       // proxy to bypass Archive.org CORS restriction -- temporary solution
-      img[0].src = 'http://insecure-archive.robocracy.org/download/' + identifier + key;
+      img[0].src = 'https://insecure-archive.robocracy.org/download/' + identifier + key;
     }
   });
 }
