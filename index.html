@@ -22,6 +22,11 @@
 
     <script src="lib/urlHash.js"></script>
     <script src="dist/leaflet-archive.js"></script>
+    <script src="lib/leaflet-hash.js"></script>
+    <script src="lib/L.Control.MousePosition.js".</script>
+    <link rel="stylesheet" href="lib/L.Control.MousePosition.css"/>
+    <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script> 
+    <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' /> 
   
 </head>
 <body>
@@ -44,6 +49,16 @@ var map;
   fetchImages(getUrlHashParameter('url'));
 
 })();
+
+var hash = new L.Hash(map);
+
+L.control.mousePosition().addTo(map);
+
+
+//});
+
+
+
 
 </script>
 
