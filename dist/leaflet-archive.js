@@ -35,7 +35,7 @@ function onResponse(result) {
     function addImageMarker(img, lat, lon) {
       console.log(img, lat, lon);
       //var originalUrl = 'https://archive.org/download/' + identifier + '/' + file.original;
-      new L.marker([lat, lon]).addTo(map).bindPopup("<a href='/" + img.src + "'><img width='200px' src='" + img.src + "' /></a>");
+      new L.marker([lat, lon]).addTo(map).bindPopup("<a href='" + img.src + "'><img width='200px' src='" + img.src + "' /></a>");
     }
 
     if (index < (limit * 2) && file.source != "derivative") {
